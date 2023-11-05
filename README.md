@@ -1,1 +1,1 @@
-WulkanWPF is a school project in which students data is taken from json file.
+WulkanWPF is a school project in which students data are taken from json file.
