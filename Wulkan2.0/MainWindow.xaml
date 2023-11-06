@@ -29,38 +29,49 @@
         <Image x:Name="studentImage" Margin="94,36,137,35" Grid.Row="1" />
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="20">
-            <Label x:Name="imieLabel" Content="IMIE:" FontSize="20" Foreground="#2E4053"/>
-            <Label x:Name="nazwiskoLabel" Content="NAZWISKO:" FontSize="20" Foreground="#2E4053"/>
-            <Label x:Name="dataLabel" Content="DATA URODZENIA:" FontSize="20" Foreground="#2E4053"/>
-            <Label x:Name="klasaLabel" Content="KLASA:" FontSize="20" Foreground="#2E4053"/>
-            <Label x:Name="semestrLabel" Content="SEMESTR:" FontSize="20" Foreground="#2E4053"/>
+            <Label x:Name="imieLabel" FontWeight="Bold" Content="IMIE:" FontSize="20" Foreground="#2E4053"/>
+            <Label x:Name="nazwiskoLabel" FontWeight="Bold" Content="NAZWISKO:" FontSize="20" Foreground="#2E4053"/>
+            <Label x:Name="dataLabel" Content="DATA URODZENIA:" FontWeight="Bold" FontSize="20" Foreground="#2E4053"/>
+            <Label x:Name="klasaLabel" Content="KLASA:" FontWeight="Bold" FontSize="20" Foreground="#2E4053"/>
+            <Label x:Name="semestrLabel" Content="SEMESTR:" FontWeight="Bold" FontSize="20" Foreground="#2E4053"/>
         </StackPanel>
 
-        <Label Content="PESEL:" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="39" Margin="20,205,0,0" Grid.Column="1"/>
-        <TextBlock x:Name="peselBlock" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Margin="91,211,0,0" Grid.Row="1" TextWrapping="Wrap" Text="00000000000" VerticalAlignment="Top" Height="26" Width="144" Grid.Column="1"/>
+        <Label Content="PESEL:" FontWeight="Bold" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="39" Margin="20,205,0,0" Grid.Column="1"/>
+        <TextBlock x:Name="peselBlock" FontWeight="Bold" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Margin="91,211,0,0" Grid.Row="1" TextWrapping="Wrap" Text="00000000000" VerticalAlignment="Top" Height="26" Width="144" Grid.Column="1"/>
 
-        <Label Content="OCENY:" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Margin="42,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="89" Height="39"/>
+        <Label Content="OCENY:" FontWeight="Bold" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Margin="42,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="89" Height="39"/>
         <TextBlock x:Name="ocenyBlock" HorizontalAlignment="Left" FontSize="20" Foreground="#2E4053" Margin="42,54,0,0" Grid.Row="2" TextWrapping="Wrap" Text="ocenyLiczbyBEDA" VerticalAlignment="Top" Height="35" Width="901" Grid.ColumnSpan="2"/>
-        <Label Content="SREDNIA:" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Margin="20,12,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="SREDNIA:" FontSize="20" FontWeight="Bold" Foreground="#2E4053" HorizontalAlignment="Left" Margin="20,12,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock x:Name="sredniaBlock" HorizontalAlignment="Left" FontSize="20" Foreground="#2E4053" Margin="20,54,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Height="39" Grid.Column="1"><Run Language="pl-pl" Text="srednia"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
 
-        <Button x:Name="btnLeft" Background="#2E4053" Foreground="White" FontSize="30" Margin="10" Content="&lt;" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="164" Width="28" Click="btnLeft_Click">
+        <Button x:Name="btnLeft" BorderThickness="0" Style="{StaticResource Button}" Foreground="#2E4053" FontSize="40" Margin="10" Content="&lt;" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="164" Width="28" Click="btnLeft_Click">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="30"/>
+                    <Setter Property="CornerRadius" Value="8"/>
+
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="btnRight" Content=">" Background="#2E4053" Margin="10" Foreground="White" FontSize="30" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Height="164" Width="28" Click="Button_Click" Grid.Column="1">
+        <Button x:Name="btnRight" Content=">" BorderThickness="0" Style="{StaticResource Button}" Margin="10" Foreground="#2E4053" FontSize="40" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Height="164" Width="28" Click="Button_Click" Grid.Column="1">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="30"/>
+                    <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </Button.Resources>
         </Button>
+
+
 
         <Label Content="Karta ucznia" FontSize="45" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  Foreground="White" HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Center" Width="428" Height="92" FontWeight="Bold" FontFamily="Cascadia Code SemiBold"/>
 
         <Label x:Name="iloscUczniowLabel" Grid.Column="1" Content="iloscUczniow" Background="#F1C40F" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="278,27, 0,0" VerticalAlignment="Top" Width="184" Height="46" FontFamily="Bahnschrift SemiBold" FontWeight="Bold"/>
+
+
+        <Button x:Name="OpenFileBtn" Grid.Column="1" Content="Wczytaj plik" Background="#F1C40F" FontSize="20" Foreground="#2E4053" HorizontalAlignment="Left" Margin="66,28,0,0" VerticalAlignment="Top" Height="46" Width="184" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" Click="OpenFileBtn_Click"/>
+
+
+
+
+
     </Grid>
 </Window>

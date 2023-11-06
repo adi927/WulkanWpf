@@ -95,34 +95,34 @@ namespace uczenSredniaWPF
             return new DateTime(rok, miesiac, dzien);
         }
 
-        public string Data()
+        public string Data
         {
-            return data_ur.ToShortDateString();
+            get { return data_ur.ToShortDateString(); }
         }
 
-        public string Imie()
+        public string Imie
         {
-            return imie;
+            get { return imie; }
         }
 
-        public string Nazwisko()
+        public string Nazwisko
         {
-            return nazwisko;
+            get { return nazwisko; }
         }
 
-        public string Klasa()
+        public string Klasa
         {
-            return klasa;
+            get { return klasa; }
         }
 
-        public string Pesel()
+        public string Pesel
         {
-            return pesel;
+            get { return pesel; }
         }
 
-        public int Semestr()
+        public int Semestr
         {
-            return semestr;
+            get { return semestr; }
         }
 
         public string Oceny()
@@ -131,6 +131,6 @@ namespace uczenSredniaWPF
             return oceny;
         }
 
-        
+
     }
 }

@@ -9,11 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <Compile Remove="ico\**" />
+    <EmbeddedResource Remove="ico\**" />
+    <None Remove="ico\**" />
+    <Page Remove="ico\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ico\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>

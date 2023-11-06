@@ -18,6 +18,7 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.Win32;
 
 namespace uczenSredniaWPF
 {
@@ -28,18 +29,19 @@ namespace uczenSredniaWPF
     {
         public int aktualnyUczenIndex = 0;
         public int iloscUczniow;
-        List<Uczen> listaUczniow = new List<Uczen>();
+        static List<Uczen> listaUczniow = new List<Uczen>();
         public MainWindow()
         {
             InitializeComponent();
 
 
             string sciezka = @"daneUczniowPrzykladowe.json";
-            string json = File.ReadAllText(sciezka);
 
+            UczenZPliku(sciezka);
 
             List<double> srednieUczniow = new List<double>();
-            listaUczniow = JsonConvert.DeserializeObject<List<Uczen>>(json);
+
+
 
             iloscUczniow = (listaUczniow.Count - 1);
             int liczbaUczniow = listaUczniow.Count;
@@ -76,6 +78,7 @@ namespace uczenSredniaWPF
 
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (aktualnyUczenIndex > 0)
@@ -106,12 +109,12 @@ namespace uczenSredniaWPF
 
         private void WyswietlDaneUcznia(int index)
         {
-            imieLabel.Content = "IMIE: " + listaUczniow[index].Imie();
-            nazwiskoLabel.Content = "NAZWISKO: " + listaUczniow[index].Nazwisko();
-            dataLabel.Content = "DATA URODZENIA: " + listaUczniow[index].Data();
-            klasaLabel.Content = "KLASA: " + listaUczniow[index].Klasa();
-            semestrLabel.Content = "SEMESTR: " + listaUczniow[index].Semestr();
-            peselBlock.Text = listaUczniow[index].Pesel();
+            imieLabel.Content = "IMIE: " + listaUczniow[index].Imie;
+            nazwiskoLabel.Content = "NAZWISKO: " + listaUczniow[index].Nazwisko;
+            dataLabel.Content = "DATA URODZENIA: " + listaUczniow[index].Data;
+            klasaLabel.Content = "KLASA: " + listaUczniow[index].Klasa;
+            semestrLabel.Content = "SEMESTR: " + listaUczniow[index].Semestr;
+            peselBlock.Text = listaUczniow[index].Pesel;
             ocenyBlock.Text = listaUczniow[index].Oceny();
             sredniaBlock.Text = listaUczniow[index].Srednia;
 
@@ -121,7 +124,7 @@ namespace uczenSredniaWPF
 
                 if (!File.Exists(imagePath))
                 {
-                    MessageBox.Show("Brak zdjęcia dla ucznia: " + listaUczniow[index].Imie() + " " + listaUczniow[index].Nazwisko());
+                    MessageBox.Show("Brak zdjęcia dla ucznia: " + listaUczniow[index].Imie + " " + listaUczniow[index].Nazwisko);
                     MessageBox.Show(imagePath);
                 }
                 else
@@ -135,6 +138,37 @@ namespace uczenSredniaWPF
                 MessageBox.Show($"Wystąpił błąd: {ex.Message}");
             }
 
+
+        }
+
+        public static void UczenZPliku(string filePath)
+        {
+            var json = File.ReadAllText(filePath);
+            listaUczniow = JsonConvert.DeserializeObject<List<Uczen>>(json);
+        }
+
+
+        private void OpenFileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Wybierz plik json z uczniami",
+                Filter = "Pliki json (*.json)|*.json",
+                Multiselect = false
+            };
+
+            bool result = (bool)openFileDialog.ShowDialog();
+
+            if (result)
+            {
+                string fileName = openFileDialog.FileName;
+                UczenZPliku(fileName);
+
+                iloscUczniow = (listaUczniow.Count - 1);
+                int liczbaUczniow = listaUczniow.Count;
+
+                iloscUczniowLabel.Content = "Ilosc uczniow: " + liczbaUczniow.ToString();
+            }
 
         }
     }
